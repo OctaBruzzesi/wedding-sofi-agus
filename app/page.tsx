@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { Calendar, MapPin, Gift, Camera, Heart } from 'lucide-react'
+import { Calendar, MapPin, Gift, Camera } from 'lucide-react'
+import RSVPDialog from '@/components/rsvp-dialog'
 
 export default function WeddingPage() {
   const heroRef = useRef<HTMLElement>(null)
@@ -53,12 +54,7 @@ export default function WeddingPage() {
             ¡NOS CASAMOS!
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-500">
-            <Button
-              size="lg"
-              className="bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
-            >
-              Confirmar asistencia
-            </Button>
+            <RSVPDialog />
           </div>
         </div>
       </section>
@@ -137,12 +133,7 @@ export default function WeddingPage() {
             formulario.
           </p>
 
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300 mb-16 animate-bounce-gentle"
-          >
-            Confirmar asistencia
-          </Button>
+          <RSVPDialog triggerClassName="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300 mb-16 animate-bounce-gentle" />
 
           <div className="grid md:grid-cols-2 gap-12 mt-16">
             {/* Dress Code */}
