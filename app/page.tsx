@@ -51,7 +51,7 @@ export default function WeddingPage() {
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-emerald-600 mx-auto mb-8 animate-expand"></div>
           <h2 className="text-2xl md:text-3xl text-green-700 mb-12 tracking-wider font-light animate-fade-in-up delay-300">
-            ¡NOS CASAMOS!
+            ¡NOS CASAMOS! eee
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-500">
             <RSVPDialog />
