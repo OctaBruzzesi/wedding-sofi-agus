@@ -1,10 +1,10 @@
-# 💒 Wedding RSVP System - Agus & Sofi
+# 💒 Wedding RSVP System - Sofi & Agus
 
 A beautiful, modern wedding website with integrated RSVP system that automatically saves responses to Google Sheets.
 
 ## ✨ Features
 
-- 🎨 **Beautiful Wedding Theme** - Elegant green/emerald color scheme with smooth animations
+- 🎨 **Beautiful Wedding Theme** - Elegant stone/neutral color scheme with smooth animations
 - 📝 **Dynamic RSVP Form** - Guests can add multiple attendees with validation
 - 📊 **Google Sheets Integration** - Automatic data collection and storage
 - 📱 **Mobile Responsive** - Perfect experience on all devices
@@ -169,12 +169,12 @@ Remember to set environment variables in your deployment platform:
 
 ## 📝 License
 
-This project is created for Agus & Sofi's wedding. Feel free to use as inspiration for your own wedding website!
+This project is created for Sofi & Agus's wedding. Feel free to use as inspiration for your own wedding website!
 
 ## 💝 Wedding Details
 
-- **Couple**: Agus & Sofi
-- **Date**: August 30, 2024
+- **Couple**: Sofi & Agus
+- **Date**: August 30, 2025
 - **Ceremony**: 6:00 PM at Nuestra Capilla del Señor
 - **Reception**: Quinta Los Jazmines
 

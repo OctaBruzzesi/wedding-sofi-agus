@@ -44,7 +44,7 @@ export default function RSVPDialog({
             size="lg"
             className={
               triggerClassName ||
-              'bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-xl'
+              'bg-neutral-700 hover:bg-neutral-800 text-white px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-xl'
             }
           >
             {triggerText}
@@ -53,7 +53,7 @@ export default function RSVPDialog({
       </DialogTrigger>
       <DialogContent className="max-w-4xl max-h-[90vh] top-4 p-0 overflow-hidden">
         <DialogHeader className="px-6 pt-6 pb-2">
-          <DialogTitle className="text-2xl font-serif text-emerald-800 text-center">
+          <DialogTitle className="text-2xl font-serif text-neutral-800 text-center">
             Confirmar Asistencia
           </DialogTitle>
         </DialogHeader>

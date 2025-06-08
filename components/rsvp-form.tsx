@@ -109,19 +109,19 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-serif text-emerald-800 mb-2">
+        <h2 className="text-3xl font-serif text-neutral-800 mb-2">
           Confirmar Asistencia
         </h2>
-        <p className="text-green-700">
+        <p className="text-stone-700">
           Por favor, completa la información de todos los asistentes
         </p>
       </div>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         {/* Main Attendee */}
-        <Card className="border-green-200 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
-            <CardTitle className="flex items-center gap-2 text-emerald-800">
+        <Card className="border-stone-200 shadow-lg">
+          <CardHeader className="bg-gradient-to-r from-stone-50 to-neutral-50">
+            <CardTitle className="flex items-center gap-2 text-neutral-800">
               <Users className="w-5 h-5" />
               Asistente Principal
             </CardTitle>
@@ -129,14 +129,14 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
           <CardContent className="pt-6 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="mainAttendee.name" className="text-green-700">
+                <Label htmlFor="mainAttendee.name" className="text-stone-700">
                   Nombre *
                 </Label>
                 <Input
                   id="mainAttendee.name"
                   {...form.register('mainAttendee.name')}
                   placeholder="Tu nombre"
-                  className="border-green-200 focus:border-emerald-500"
+                  className="border-stone-200 focus:border-neutral-500"
                 />
                 {form.formState.errors.mainAttendee?.name && (
                   <p className="text-sm text-red-600">
@@ -147,7 +147,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
               <div className="space-y-2">
                 <Label
                   htmlFor="mainAttendee.lastName"
-                  className="text-green-700"
+                  className="text-stone-700"
                 >
                   Apellido *
                 </Label>
@@ -155,7 +155,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                   id="mainAttendee.lastName"
                   {...form.register('mainAttendee.lastName')}
                   placeholder="Tu apellido"
-                  className="border-green-200 focus:border-emerald-500"
+                  className="border-stone-200 focus:border-neutral-500"
                 />
                 {form.formState.errors.mainAttendee?.lastName && (
                   <p className="text-sm text-red-600">
@@ -165,7 +165,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="mainAttendee.email" className="text-green-700">
+              <Label htmlFor="mainAttendee.email" className="text-stone-700">
                 Email (opcional)
               </Label>
               <Input
@@ -173,7 +173,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                 type="email"
                 {...form.register('mainAttendee.email')}
                 placeholder="tu@email.com"
-                className="border-green-200 focus:border-emerald-500"
+                className="border-stone-200 focus:border-neutral-500"
               />
               {form.formState.errors.mainAttendee?.email && (
                 <p className="text-sm text-red-600">
@@ -186,14 +186,14 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                 <Checkbox
                   id="mainAttendee.needsTransport"
                   {...form.register('mainAttendee.needsTransport')}
-                  className="border-green-300 data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
+                  className="border-stone-300 data-[state=checked]:bg-neutral-600 data-[state=checked]:border-neutral-600"
                 />
                 <Label
                   htmlFor="mainAttendee.needsTransport"
-                  className="text-green-700 flex items-center gap-2"
+                  className="text-stone-700 flex items-center gap-2"
                 >
                   <Bus className="w-4 h-4" />
-                  Incluir transporte
+                  Incluir transporte (Sale de Plaza Italia a las 15.45. Vuelve al mismo lugar a las 4.30 AM)
                 </Label>
               </div>
             </div>
@@ -202,9 +202,9 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
 
         {/* Additional Attendees */}
         {fields.length > 0 && (
-          <Card className="border-emerald-200 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-emerald-50 to-green-50">
-              <CardTitle className="flex items-center gap-2 text-emerald-800">
+          <Card className="border-neutral-200 shadow-lg">
+            <CardHeader className="bg-gradient-to-r from-neutral-50 to-stone-50">
+              <CardTitle className="flex items-center gap-2 text-neutral-800">
                 <Plus className="w-5 h-5" />
                 Acompañantes ({fields.length})
               </CardTitle>
@@ -213,10 +213,10 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
               {fields.map((field, index) => (
                 <div
                   key={field.id}
-                  className="space-y-4 p-4 bg-green-50/50 rounded-lg border border-green-100"
+                  className="space-y-4 p-4 bg-stone-50/50 rounded-lg border border-stone-100"
                 >
                   <div className="flex items-center justify-between">
-                    <h4 className="font-medium text-emerald-800">
+                    <h4 className="font-medium text-neutral-800">
                       Acompañante {index + 1}
                     </h4>
                     <Button
@@ -231,11 +231,11 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-green-700">Nombre *</Label>
+                      <Label className="text-stone-700">Nombre *</Label>
                       <Input
                         {...form.register(`additionalAttendees.${index}.name`)}
                         placeholder="Nombre del acompañante"
-                        className="border-green-200 focus:border-emerald-500"
+                        className="border-stone-200 focus:border-neutral-500"
                       />
                       {form.formState.errors.additionalAttendees?.[index]
                         ?.name && (
@@ -248,13 +248,13 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                       )}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-green-700">Apellido *</Label>
+                      <Label className="text-stone-700">Apellido *</Label>
                       <Input
                         {...form.register(
                           `additionalAttendees.${index}.lastName`
                         )}
                         placeholder="Apellido del acompañante"
-                        className="border-green-200 focus:border-emerald-500"
+                        className="border-stone-200 focus:border-neutral-500"
                       />
                       {form.formState.errors.additionalAttendees?.[index]
                         ?.lastName && (
@@ -268,12 +268,12 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-green-700">Email (opcional)</Label>
+                    <Label className="text-stone-700">Email (opcional)</Label>
                     <Input
                       type="email"
                       {...form.register(`additionalAttendees.${index}.email`)}
                       placeholder="email@ejemplo.com"
-                      className="border-green-200 focus:border-emerald-500"
+                      className="border-stone-200 focus:border-neutral-500"
                     />
                     {form.formState.errors.additionalAttendees?.[index]
                       ?.email && (
@@ -292,14 +292,14 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                         {...form.register(
                           `additionalAttendees.${index}.needsTransport`
                         )}
-                        className="border-green-300 data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
+                        className="border-stone-300 data-[state=checked]:bg-neutral-600 data-[state=checked]:border-neutral-600"
                       />
                       <Label
                         htmlFor={`additionalAttendees.${index}.needsTransport`}
-                        className="text-green-700 flex items-center gap-2"
+                        className="text-stone-700 flex items-center gap-2"
                       >
                         <Bus className="w-4 h-4" />
-                        Incluir transporte
+                        Incluir transporte (Sale de Plaza Italia a las 15.45. Vuelve al mismo lugar a las 4.30 AM)
                       </Label>
                     </div>
                   </div>
@@ -315,7 +315,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
             type="button"
             variant="outline"
             onClick={addAttendee}
-            className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+            className="border-neutral-600 text-neutral-600 hover:bg-neutral-50"
           >
             <Plus className="w-4 h-4 mr-2" />
             Agregar acompañante
@@ -323,9 +323,9 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
         </div>
 
         {/* Special Requests */}
-        <Card className="border-green-200 shadow-lg">
+        <Card className="border-stone-200 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-emerald-800">
+            <CardTitle className="text-neutral-800">
               Solicitudes Especiales (opcional)
             </CardTitle>
           </CardHeader>
@@ -333,7 +333,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
             <Textarea
               {...form.register('specialRequests')}
               placeholder="¿Alguna restricción alimentaria, necesidad especial o comentario?"
-              className="border-green-200 focus:border-emerald-500 min-h-[100px]"
+              className="border-stone-200 focus:border-neutral-500 min-h-[100px]"
             />
             {form.formState.errors.specialRequests && (
               <p className="text-sm text-red-600">
@@ -343,11 +343,11 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
           </CardContent>
         </Card>
 
-        <Separator className="bg-green-200" />
+        <Separator className="bg-stone-200" />
 
         {/* Summary */}
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
-          <p className="text-center text-emerald-800 font-medium">
+        <div className="bg-gradient-to-r from-stone-50 to-neutral-50 p-4 rounded-lg border border-stone-200">
+          <p className="text-center text-neutral-800 font-medium">
             Total de asistentes:{' '}
             <span className="text-2xl font-bold">{totalAttendees}</span>
           </p>
@@ -400,7 +400,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-8"
+            className="bg-gradient-to-r from-stone-600 to-neutral-700 hover:from-stone-700 hover:to-neutral-800 text-white px-8"
           >
             {isSubmitting ? (
               <>
