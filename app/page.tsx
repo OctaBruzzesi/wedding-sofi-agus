@@ -41,14 +41,14 @@ export default function WeddingPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-stone-50 to-neutral-50">
+    <div className="w-full min-h-screen bg-gradient-to-br from-white via-stone-50 to-neutral-50">
       {/* Hero Section */}
       <section
         ref={heroRef}
         style={{
           backgroundImage: "url('/Fondo1.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: "contain",
+          backgroundPosition: "top center",
           backgroundRepeat: "no-repeat",
         }}
         className="min-h-screen flex flex-col items-center justify-center px-4 text-center opacity-0 translate-y-8 transition-all duration-1000 ease-out relative overflow-hidden"
@@ -83,13 +83,13 @@ export default function WeddingPage() {
   <img
     src="/branch_0_0.png"
     alt="Decoración izquierda"
-    className="hidden md:block absolute -left-35 -top-18 w-40 animate-float-leaf-slow"
+    className="absolute left-0 top-18 w-24 sm:w-40 animate-float-leaf-slow"
     style={{ zIndex: 1 }}
   />
   {/* Solo un cuadro, centrado y más ancho */}
   <div className="flex justify-center">
       <div
-    className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-stone-100 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl animate-slide-in-left max-w-2xl w-full"
+    className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-stone-100 transform hover:scale-105 transition-all hover:shadow-2xl animate-slide-in-left max-w-2xl w-full"
     style={{
       backgroundImage: "url('/FondoCuadrito1.jpg')",
       backgroundSize: "cover",
