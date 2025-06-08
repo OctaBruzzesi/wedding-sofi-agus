@@ -32,25 +32,25 @@ export default function AdminPanel() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-serif text-emerald-800 mb-2 flex items-center justify-center gap-2">
+        <h1 className="text-3xl font-serif text-neutral-800 mb-2 flex items-center justify-center gap-2">
           <Settings className="w-8 h-8" />
           Panel de Administración
         </h1>
-        <p className="text-green-700">
+        <p className="text-stone-700">
           Herramientas para gestionar las confirmaciones de la boda
         </p>
       </div>
 
       {/* Google Sheets Connection Test */}
-      <Card className="border-green-200 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
-          <CardTitle className="flex items-center gap-2 text-emerald-800">
+      <Card className="border-stone-200 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-stone-50 to-neutral-50">
+          <CardTitle className="flex items-center gap-2 text-neutral-800">
             <TestTube className="w-5 h-5" />
             Prueba de Conexión Google Sheets
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-6 space-y-4">
-          <p className="text-green-700 mb-4">
+          <p className="text-stone-700 mb-4">
             Verifica que la integración con Google Sheets esté funcionando
             correctamente.
           </p>
@@ -58,7 +58,7 @@ export default function AdminPanel() {
           <Button
             onClick={testGoogleSheetsConnection}
             disabled={isTestingConnection}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+            className="bg-neutral-600 hover:bg-neutral-700 text-white"
           >
             {isTestingConnection ? (
               <>
@@ -77,13 +77,13 @@ export default function AdminPanel() {
             <div className="mt-4 p-4 rounded-lg border">
               <div className="flex items-center gap-2 mb-2">
                 {connectionResult.success ? (
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-stone-600" />
                 ) : (
                   <XCircle className="w-5 h-5 text-red-600" />
                 )}
                 <Badge
                   variant={connectionResult.success ? 'default' : 'destructive'}
-                  className={connectionResult.success ? 'bg-green-600' : ''}
+                  className={connectionResult.success ? 'bg-stone-600' : ''}
                 >
                   {connectionResult.success ? 'Éxito' : 'Error'}
                 </Badge>
@@ -168,10 +168,10 @@ export default function AdminPanel() {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center p-4 bg-green-50 rounded-lg">
-              <div className="text-2xl font-bold text-green-600">✅</div>
-              <p className="text-sm text-green-700 mt-1">Formulario RSVP</p>
-              <p className="text-xs text-green-600">Funcionando</p>
+            <div className="text-center p-4 bg-stone-50 rounded-lg">
+              <div className="text-2xl font-bold text-stone-600">✅</div>
+              <p className="text-sm text-stone-700 mt-1">Formulario RSVP</p>
+              <p className="text-xs text-stone-600">Funcionando</p>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-lg">
               <div className="text-2xl font-bold text-blue-600">🔗</div>
