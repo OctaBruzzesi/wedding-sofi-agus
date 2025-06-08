@@ -62,7 +62,7 @@ export default function WeddingPage() {
             ¡NOS CASAMOS!
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-500">
-            <RSVPDialog />
+            <RSVPDialog triggerClassName="animate-bounce-gentle" />
           </div>
         </div>
       </section>
@@ -75,33 +75,52 @@ export default function WeddingPage() {
         <div className="max-w-6xl mx-auto">
   <div className="text-center mb-16">
     <h2 className="text-4xl md:text-5xl font-serif text-neutral-800 mb-4 animate-fade-in-up">
-      Dónde
+      Dónde y cuándo?
     </h2>
     <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
   </div>
-
+  {/* Imagen izquierda, más arriba */}
+  <img
+    src="/branch_0_0.png"
+    alt="Decoración izquierda"
+    className="hidden md:block absolute -left-35 -top-18 w-40"
+    style={{ zIndex: 1 }}
+  />
   {/* Solo un cuadro, centrado y más ancho */}
   <div className="flex justify-center">
-    <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-stone-100 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl animate-slide-in-left max-w-2xl w-full">
+      <div
+    className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-stone-100 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl animate-slide-in-left max-w-2xl w-full"
+    style={{
+      backgroundImage: "url('/FondoCuadrito1.jpg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
       <div className="flex items-center gap-3 mb-6 justify-center">
-        <Calendar className="w-8 h-8 text-stone-600" />
-        <h3 className="text-2xl font-serif text-neutral-800">
-          Ceremonia y Fiesta
-        </h3>
+        <Calendar className="w-8 h-8 text-stone-600 justify-center" />
       </div>
       <div className="space-y-3 text-stone-700 mb-6 text-center">
         <p className="text-xl font-medium">Sábado 30 de Agosto, 2025</p>
         <p className="text-lg">17:00 h</p>
-        <p className="text-lg font-medium">Espacio PK Campo</p>
+        <p className="text-lg font-medium">Salón: Espacio PK Campo</p>
         <p className="text-stone-600">Capilla del Señor, Provincia de Buenos Aires</p>
       </div>
-      <Button
-        variant="outline"
-        className="border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
-      >
-        <MapPin className="w-4 h-4 mr-2" />
-        Ver ubicación
-      </Button>
+      <div className="flex justify-center">
+        <a
+          href="https://www.google.com/maps/place/Espacio+PK+Campo/@-34.3582413,-59.1240167,17z/data=!3m1!4b1!4m6!3m5!1s0x95bb83bc2e574ef5:0xce69798a50b7e448!8m2!3d-34.3582413!4d-59.1214364!16s%2Fg%2F11rnd2kl2v?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            variant="outline"
+            className="border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
+          >
+            <MapPin className="w-4 h-4 mr-2" />
+            Ver ubicación
+          </Button>
+        </a>
+      </div>
     </div>
   </div>
 </div>
