@@ -70,7 +70,7 @@ export default function WeddingPage() {
       {/* Where Section */}
       <section
         ref={whereRef}
-        className="py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
+        className="bg-stone-100 py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
         <div className="max-w-6xl mx-auto">
   <div className="text-center mb-16">
@@ -83,7 +83,7 @@ export default function WeddingPage() {
   <img
     src="/branch_0_0.png"
     alt="Decoración izquierda"
-    className="hidden md:block absolute -left-35 -top-18 w-40"
+    className="hidden md:block absolute -left-35 -top-18 w-40 animate-float-leaf-slow"
     style={{ zIndex: 1 }}
   />
   {/* Solo un cuadro, centrado y más ancho */}
@@ -114,7 +114,7 @@ export default function WeddingPage() {
         >
           <Button
             variant="outline"
-            className="border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
+            className="bg-stone-100 border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
           >
             <MapPin className="w-4 h-4 mr-2" />
             Ver ubicación
