@@ -47,8 +47,8 @@ export default function WeddingPage() {
         ref={heroRef}
         style={{
           backgroundImage: "url('/Fondo1.jpg')",
-          backgroundSize: "contain",
-          backgroundPosition: "top center",
+          backgroundSize: "cover",
+          backgroundPosition: "right",
           backgroundRepeat: "no-repeat",
         }}
         className="min-h-screen flex flex-col items-center justify-center px-4 text-center opacity-0 translate-y-8 transition-all duration-1000 ease-out relative overflow-hidden"
@@ -83,7 +83,7 @@ export default function WeddingPage() {
   <img
     src="/branch_0_0.png"
     alt="Decoración izquierda"
-    className="absolute left-0 top-18 w-24 sm:w-40 animate-float-leaf-slow"
+    className="absolute left-0 top-12 w-20 sm:w-40 animate-float-leaf-slow"
     style={{ zIndex: 1 }}
   />
   {/* Solo un cuadro, centrado y más ancho */}
