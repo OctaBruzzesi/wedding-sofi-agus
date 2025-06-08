@@ -193,7 +193,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                   className="text-green-700 flex items-center gap-2"
                 >
                   <Bus className="w-4 h-4" />
-                  Incluir transporte
+                  Incluir transporte (Sale de Plaza Italia a las 3.45 PM. Regresa al mismo lugar 4.30 AM)
                 </Label>
               </div>
             </div>
@@ -299,7 +299,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                         className="text-green-700 flex items-center gap-2"
                       >
                         <Bus className="w-4 h-4" />
-                        Incluir transporte
+                        Incluir transporte (Sale de Plaza Italia a las 3.45 PM. Regresa al mismo lugar 4.30 AM)
                       </Label>
                     </div>
                   </div>
