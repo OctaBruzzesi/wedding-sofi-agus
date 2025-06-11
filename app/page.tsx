@@ -41,28 +41,29 @@ export default function WeddingPage() {
   }, [])
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-white via-stone-50 to-neutral-50">
+    <div className="bg-[url('/Fondo4.jpg')] bg-top sm:bg-center min-h-screen">
       {/* Hero Section */}
       <section
         ref={heroRef}
         style={{
-          backgroundImage: "url('/Fondo1.jpg')",
+          backgroundImage: "url('/Fondo4.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "right",
-          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top",
+          backgroundRepeat: "repeat",
         }}
         className="min-h-screen flex flex-col items-center justify-center px-4 text-center opacity-0 translate-y-8 transition-all duration-1000 ease-out relative overflow-hidden"
       >
         <div className="max-w-4xl mx-auto relative z-10">
-          <h1 className="text-6xl md:text-8xl font-bold text-neutral-800 mb-4 font-serif animate-fade-in-up">
-            Sofi <span className="text-5xl text-stone-600 italic">&</span> Agus
+          <div className="w-32 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto mb-8 animate-expand"></div>
+          <h1 className="text-6xl md:text-8xl font-bold text-stone-500 mb-4 poltawski-nowy animate-fade-in-up [font-variant-ligatures:none]">
+            Sofi <span className="text-5xl text-stone-600">&</span> Agus
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto mb-8 animate-expand"></div>
-          <h2 className="text-2xl md:text-3xl text-stone-700 mb-12 tracking-wider font-light animate-fade-in-up delay-300">
+          <h2 className="text-2xl md:text-2xl text-stone-700 mb-12 tracking-wider font-light animate-fade-in-up delay-300 poltawski-nowy">
             ¡NOS CASAMOS!
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-500">
-            <RSVPDialog triggerClassName="animate-bounce-gentle" />
+            <RSVPDialog triggerClassName="bg-gradient-to-r from-stone-600 to-neutral-700 hover:from-stone-700 hover:to-neutral-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300 mb-16 text-[1.2rem] animate-bounce-gentle poltawski-nowy" />
           </div>
         </div>
       </section>
@@ -70,7 +71,13 @@ export default function WeddingPage() {
       {/* Where Section */}
       <section
         ref={whereRef}
-        className="bg-stone-100 py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
+          style={{
+          backgroundImage: "url('/Fondo4.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "left",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
         <div className="max-w-6xl mx-auto">
   <div className="text-center mb-16">
@@ -83,7 +90,7 @@ export default function WeddingPage() {
   <img
     src="/branch_0_0.png"
     alt="Decoración izquierda"
-    className="absolute left-0 top-12 w-20 sm:w-40 animate-float-leaf-slow"
+    className="absolute left-0 top-10 w-20 sm:w-40"
     style={{ zIndex: 1 }}
   />
   {/* Solo un cuadro, centrado y más ancho */}
@@ -104,7 +111,7 @@ export default function WeddingPage() {
         <p className="text-xl font-medium">Sábado 30 de Agosto, 2025</p>
         <p className="text-lg">17:00 h</p>
         <p className="text-lg font-medium">Salón: Espacio PK Campo</p>
-        <p className="text-stone-600">Capilla del Señor, Provincia de Buenos Aires</p>
+        <p className="text-stone-600">Capilla del Señor, Prov. de Bs As</p>
       </div>
       <div className="flex justify-center">
         <a
@@ -129,6 +136,7 @@ export default function WeddingPage() {
       {/* RSVP Section */}
       <section
         ref={rsvpRef}
+        
         className="py-20 px-4 bg-gradient-to-r from-stone-100/50 to-neutral-100/50 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
         <div className="max-w-4xl mx-auto text-center">
@@ -146,7 +154,7 @@ export default function WeddingPage() {
             {/* Dress Code */}
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-stone-100 transform hover:scale-105 transition-all duration-500 animate-slide-in-left">
               <div className="flex items-center gap-3 mb-6 justify-center">
-                <span className="text-3xl">👔</span>
+                <span className="text-3xl"></span>
                 <h3 className="text-2xl font-serif text-neutral-800">
                   Dress Code
                 </h3>
@@ -164,7 +172,7 @@ export default function WeddingPage() {
             {/* Gifts */}
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-neutral-100 transform hover:scale-105 transition-all duration-500 animate-slide-in-right">
               <div className="flex items-center gap-3 mb-6 justify-center">
-                <span className="text-3xl">🎁</span>
+                <span className="text-3xl"></span>
                 <h3 className="text-2xl font-serif text-neutral-800">
                   Quiero regalar
                 </h3>
