@@ -41,7 +41,7 @@ export default function WeddingPage() {
   }, [])
 
   return (
-    <div className="bg-[url('/Fondo4.jpg')] bg-top sm:bg-center min-h-screen">
+    <div className="bg-[url('/Fondo4.jpg')] bg-top sm:bg-cover min-h-screen">
       {/* Hero Section */}
       <section
         ref={heroRef}
