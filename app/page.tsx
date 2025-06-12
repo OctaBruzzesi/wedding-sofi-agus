@@ -1,9 +1,62 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Calendar, MapPin, Gift, Camera } from 'lucide-react'
 import RSVPDialog from '@/components/rsvp-dialog'
+
+function getTimeLeft() {
+  const target = new Date('2025-08-30T17:00:00-03:00').getTime()
+  const now = new Date().getTime()
+  const diff = target - now
+
+  if (diff <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 }
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24)
+  const minutes = Math.floor((diff / (1000 * 60)) % 60)
+  const seconds = Math.floor((diff / 1000) % 60)
+  return { days, hours, minutes, seconds }
+}
+
+function Countdown() {
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft())
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(getTimeLeft())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="flex justify-center mb-10">
+      <div className="flex gap-6 bg-white/80 backdrop-blur rounded-2xl shadow-lg px-8 py-4 border border-stone-200">
+        {[
+          { label: 'DÍAS', value: timeLeft.days },
+          { label: 'HORAS', value: timeLeft.hours },
+          { label: 'MIN', value: timeLeft.minutes },
+          { label: 'SEG', value: timeLeft.seconds },
+        ].map((item, idx) => (
+          <div key={item.label} className="flex flex-col items-center">
+            <span className="text-4xl md:text-5xl font-bold text-stone-600 poltawski-nowy animate-fade-in-up">
+              {String(item.value).padStart(2, '0')}
+            </span>
+            <span className="text-xs md:text-sm text-stone-500 tracking-widest font-semibold poltawski-nowy mt-1">
+              {item.label}
+            </span>
+            {idx < 3 && (
+              <span className="hidden md:inline-block mx-2 text-stone-400 text-2xl font-bold align-middle">:</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 
 export default function WeddingPage() {
   const heroRef = useRef<HTMLElement>(null)
@@ -66,33 +119,30 @@ export default function WeddingPage() {
             <RSVPDialog triggerClassName="bg-gradient-to-r from-stone-600 to-neutral-700 hover:from-stone-700 hover:to-neutral-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300 mb-16 text-[1.2rem] animate-bounce-gentle poltawski-nowy" />
           </div>
         </div>
+        {/* Countdown debajo del Hero */}
+        <Countdown />
       </section>
 
       {/* Where Section */}
       <section
         ref={whereRef}
-          style={{
-          backgroundImage: "url('/Fondo4.webp')",
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('/Fondo8.webp')`,
           backgroundSize: "cover",
-          backgroundPosition: "left",
+          backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          animation: "gradientBG 12s ease infinite",
         }}
         className="py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
         <div className="max-w-6xl mx-auto">
   <div className="text-center mb-16">
-    <h2 className="text-4xl md:text-5xl font-serif text-neutral-800 mb-4 animate-fade-in-up">
-      Dónde y cuándo?
+    <h2 className="text-3xl md:text-4xl mb-4 animate-fade-in-up text-stone-500 poltawski-nowy">
+      ¿DÓNDE Y CUÁNDO?
     </h2>
-    <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
   </div>
-  {/* Imagen izquierda, más arriba */}
-  <img
-    src="/branch_0_0.png"
-    alt="Decoración izquierda"
-    className="absolute left-0 top-10 w-20 sm:w-40"
-    style={{ zIndex: 1 }}
-  />
   {/* Solo un cuadro, centrado y más ancho */}
   <div className="flex justify-center">
       <div
