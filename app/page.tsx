@@ -41,12 +41,12 @@ export default function WeddingPage() {
   }, [])
 
   return (
-    <div className="bg-[url('/Fondo4.jpg')] bg-top sm:bg-cover min-h-screen">
+    <div className="bg-top sm:bg-cover min-h-screen">
       {/* Hero Section */}
       <section
         ref={heroRef}
         style={{
-          backgroundImage: "url('/Fondo4.jpg')",
+          backgroundImage: "url('/Fondo4.webp')",
           backgroundSize: "cover",
           backgroundPosition: "top",
           backgroundRepeat: "repeat",
@@ -72,7 +72,7 @@ export default function WeddingPage() {
       <section
         ref={whereRef}
           style={{
-          backgroundImage: "url('/Fondo4.jpg')",
+          backgroundImage: "url('/Fondo4.webp')",
           backgroundSize: "cover",
           backgroundPosition: "left",
           backgroundRepeat: "no-repeat",
