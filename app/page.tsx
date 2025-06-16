@@ -216,9 +216,6 @@ function Countdown() {
             <span className="text-xs md:text-sm text-stone-500 tracking-widest font-semibold poltawski-nowy mt-1">
               {item.label}
             </span>
-            {idx < 3 && (
-              <span className="hidden md:inline-block mx-2 text-stone-400 text-2xl font-bold align-middle">:</span>
-            )}
           </div>
         ))}
       </div>
