@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm, useFieldArray } from 'react-hook-form'
+import { useForm, useFieldArray, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus, Minus, Users, Send, Loader2, Bus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -183,19 +183,38 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
             </div>
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="mainAttendee.needsTransport"
-                  {...form.register('mainAttendee.needsTransport')}
-                  className="border-stone-300 data-[state=checked]:bg-neutral-600 data-[state=checked]:border-neutral-600"
+                <Controller
+                  name="mainAttendee.needsTransport"
+                  control={form.control}
+                  render={({ field }) => (
+                    <Checkbox
+                      id="mainAttendee.needsTransport"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      className="border-stone-300 data-[state=checked]:bg-neutral-600 data-[state=checked]:border-neutral-600"
+                    />
+                  )}
                 />
-                <Label
+                                <Label
                   htmlFor="mainAttendee.needsTransport"
                   className="text-stone-700 flex items-center gap-2"
                 >
-                  <Bus className="w-4 h-4" />
-                  Incluir transporte (Sale de Plaza Italia a las 15.45. Vuelve al mismo lugar a las 4.30 AM)
+                  <Bus className="w-5 h-5" />
+                  Incluir transporte desde CABA
                 </Label>
               </div>
+              {form.watch('mainAttendee.needsTransport') && (
+            <div className="bg-white p-4 rounded-md border border-stone-200">
+              <div className="mt-2 p-3 bg-stone-50 rounded-lg border border-stone-200">
+                <div className="text-sm space-y-1 text-stone-700">
+                  <p className="font-semibold">📍 Salida: Plaza Italia, Palermo</p>
+                  <p className="font-semibold">🕐 Ida: 3:30 PM (estar 15 min antes)</p>
+                  <p className="font-semibold">🔄 Vuelta: Sale 3:30 AM del salón</p>
+                  <p className="text-xs text-stone-600 mt-2 italic">* El transporte es gratuito y regresa al mismo punto</p>
+                </div>
+              </div>
+            </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -287,21 +306,36 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`additionalAttendees.${index}.needsTransport`}
-                        {...form.register(
-                          `additionalAttendees.${index}.needsTransport`
+                      <Controller
+                        name={`additionalAttendees.${index}.needsTransport`}
+                        control={form.control}
+                        render={({ field }) => (
+                          <Checkbox
+                            id={`additionalAttendees.${index}.needsTransport`}
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            className="border-stone-300 data-[state=checked]:bg-neutral-600 data-[state=checked]:border-neutral-600"
+                          />
                         )}
-                        className="border-stone-300 data-[state=checked]:bg-neutral-600 data-[state=checked]:border-neutral-600"
                       />
                       <Label
                         htmlFor={`additionalAttendees.${index}.needsTransport`}
                         className="text-stone-700 flex items-center gap-2"
                       >
-                        <Bus className="w-4 h-4" />
-                        Incluir transporte (Sale de Plaza Italia a las 15.45. Vuelve al mismo lugar a las 4.30 AM)
+                        <Bus className="w-5 h-5" />
+                        Incluir transporte desde CABA
                       </Label>
                     </div>
+                    {form.watch(`additionalAttendees.${index}.needsTransport`) && (
+                      <div className="mt-2 p-3 bg-stone-50 rounded-lg border border-stone-200">
+                        <div className="text-sm space-y-1 text-stone-700">
+                          <p className="font-semibold">📍 Salida: Plaza Italia, Palermo</p>
+                          <p className="font-semibold">🕐 Ida: 3:30 PM (estar 15 min antes)</p>
+                          <p className="font-semibold">🔄 Vuelta: Sale 3:30 AM del salón</p>
+                          <p className="text-xs text-stone-600 mt-2 italic">* El transporte es gratuito y regresa al mismo punto</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -355,30 +389,28 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
 
         {/* Transport Information */}
         {hasTransportNeeds && (
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-200">
+          <div className="bg-gradient-to-r from-stone-50 to-neutral-50 p-6 rounded-lg border border-stone-200">
             <div className="text-center mb-4">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <Bus className="w-6 h-6 text-blue-600" />
-                <h3 className="text-xl font-semibold text-blue-800">
+                <Bus className="w-6 h-6 text-stone-600" />
+                <h3 className="text-xl font-semibold text-stone-700">
                   Información de Transporte
                 </h3>
               </div>
-              <p className="text-blue-700 font-medium">
+              <p className="text-stone-700 font-medium">
                 {totalNeedingTransport} persona
                 {totalNeedingTransport !== 1 ? 's' : ''} necesita
                 {totalNeedingTransport === 1 ? '' : 'n'} transporte
               </p>
             </div>
-            <div className="bg-white p-4 rounded-md border border-blue-100">
-              <div className="space-y-2 text-sm text-blue-800">
-                <p className="font-semibold">📍 Punto de partida:</p>
-                <p className="ml-4">Plaza Italia, Palermo</p>
-                <p className="font-semibold">🕐 Horario de salida:</p>
-                <p className="ml-4">15:45 hs</p>
-                <p className="text-xs text-blue-600 mt-3 italic">
-                  * El transporte es gratuito y regresa al mismo punto después
-                  del evento
-                </p>
+            <div className="bg-white p-4 rounded-md border border-stone-200">
+              <div className="mt-2 p-3 bg-stone-50 rounded-lg border border-stone-200">
+                <div className="text-sm space-y-1 text-stone-700">
+                  <p className="font-semibold">📍 Salida: Plaza Italia, Palermo</p>
+                  <p className="font-semibold">🕐 Ida: 3:30 PM (estar 15 min antes)</p>
+                  <p className="font-semibold">🔄 Vuelta: Sale 3:30 AM del salón</p>
+                  <p className="text-xs text-stone-600 mt-2 italic">* El transporte es gratuito y regresa al mismo punto</p>
+                </div>
               </div>
             </div>
           </div>
