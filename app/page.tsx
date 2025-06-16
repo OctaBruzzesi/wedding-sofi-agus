@@ -2,37 +2,44 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Shirt, Calendar, MapPin, Gift, Camera, Lightbulb, BadgeDollarSign } from 'lucide-react'
+import { Shirt, Calendar, MapPin, Gift, Camera, Lightbulb, BadgeDollarSign, Instagram, Copy, Check } from 'lucide-react'
 import RSVPDialog from '@/components/rsvp-dialog'
 
-// Componente para el modal de inspiración Dress Code
+// Componente para el modal de inspiración Dress Code - Movido al nivel superior
 function DressCodeInspoModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   if (!open) return null
   return (
     <div
-      className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/40"
-      style={{ pointerEvents: 'auto' }}
+      className="fixed inset-0 flex items-center justify-center backdrop-blur-sm"
+      style={{ 
+        pointerEvents: 'auto',
+        zIndex: 999999,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)'
+      }}
     >
       <div
-        className="rounded-2xl shadow-2xl max-w-lg w-full p-6 relative bg-white"
+        className="rounded-2xl shadow-2xl max-w-lg w-full p-6 relative bg-white max-h-[90vh] overflow-y-auto mx-4"
         style={{
           backgroundImage: "url('/FondoCuadrito1.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          zIndex: 10001,
+          zIndex: 999999,
         }}
       >
         <Button
           className="bg-stone-100 border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300 absolute top-4 right-4"
           onClick={onClose}
           aria-label="Cerrar"
+          style={{ zIndex: 999999 }}
         >
           ×
         </Button>
 
-        <div className="space-y-6">
+        <div className="space-y-6 pt-8">
           <div>
+          <p className="text-stone-700 text-sm text-center mt-3 mb-4">
+          Vestimenta formal para comenzar</p>
             <img
               src="/Trafi2.jpeg"
               alt="Inspiración 1"
@@ -47,43 +54,122 @@ function DressCodeInspoModal({ open, onClose }: { open: boolean; onClose: () => 
               className="rounded-xl mb-2 w-[90%] mx-auto object-cover h-48"
             />
           </div>
-          <p className="text-stone-700 text-sm text-center mt-6">
-            Llevar zapatillas para cambiarse y bailar cómodos
-          </p>
+          <p className="text-stone-700 text-sm text-center mt-0 whitespace-nowrap">
+            Llevar zapatillas para cambiarse y bailar cómodos<br />Hombres además remera negra</p>
+          <div>
+            <img
+              src="/Achos.jpeg"
+              alt="Inspiración 3"
+              className="rounded-xl mb-2 w-[90%] mx-auto object-cover h-48"
+              style={{ objectPosition: 'center 45%' }}
+            />
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-// Dentro del recuadro Dress Code:
-function DressCodeBox() {
-  const [open, setOpen] = useState(false)
+// Componente para el modal de datos bancarios - Movido al nivel superior
+function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [copiedCBU, setCopiedCBU] = useState<string | null>(null)
+
+  const copyToClipboard = async (text: string, cbuName: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedCBU(cbuName)
+      setTimeout(() => setCopiedCBU(null), 2000)
+    } catch (err) {
+      console.error('Error al copiar:', err)
+    }
+  }
+
+  if (!open) return null
   return (
     <div
-      className="bg-white/90 backdrop-blur-sm rounded-3xl p-4 sm:p-5 shadow-xl border border-stone-100 max-w-md w-full mx-auto flex flex-col items-center relative"
-      style={{
-        backgroundImage: "url('/FondoCuadrito1.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        zIndex: 0, // aseguramos que este recuadro no tenga z-index alto que bloquee el modal
+      className="fixed inset-0 flex items-center justify-center backdrop-blur-sm"
+      style={{ 
+        pointerEvents: 'auto',
+        zIndex: 999999,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)'
       }}
     >
-      <Shirt className="w-7 h-7 text-stone-600 justify-center" />
-      <div className="h-3" /> {/* Espacio entre el icono y el texto */}
-      <h3 className="text-2xl font-bold text-stone-600  mb-4">Dress Code</h3>
-      <p className="text-stone-700  mb-4 text-center">
-        Vestimenta formal
-      </p>
-      <Button
-        className="bg-stone-100 border border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
-        onClick={() => setOpen(true)}
+      <div
+        className="rounded-2xl shadow-2xl max-w-lg w-full p-6 relative bg-white max-h-[90vh] overflow-y-auto mx-4"
+        style={{
+          backgroundImage: "url('/FondoCuadrito1.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          zIndex: 999999,
+        }}
       >
-        <Lightbulb className="w-4 h-4 mr-2" />
-        Ver inspiración
-      </Button>
-      <DressCodeInspoModal open={open} onClose={() => setOpen(false)} />
+        <Button
+          className="bg-stone-100 border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300 absolute top-4 right-4"
+          onClick={onClose}
+          aria-label="Cerrar"
+          style={{ zIndex: 999999 }}
+        >
+          ×
+        </Button>
+
+        <div className="space-y-6 pt-8">
+          <h3 className="text-2xl font-bold text-stone-600 text-center">Datos Bancarios</h3>
+          
+          {/* Cuenta A */}
+          <div className="bg-white/80 rounded-xl p-4 border border-stone-200">
+            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇺🇾 Cuenta USD Uruguay</h4>
+            <div className="space-y-2 text-stone-600">
+              <p><span className="font-medium">Banco:</span> Banco Itaú</p>
+              <p><span className="font-medium">Titular:</span> Sofia Plager</p>
+              <div className="flex items-center justify-between">
+                <p><span className="font-medium">CBU:</span> 2872690</p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="ml-2 h-8 w-8 p-0 bg-stone-50 border-stone-300 hover:bg-stone-100"
+                  onClick={() => copyToClipboard('2872690', 'uruguay')}
+                >
+                  {copiedCBU === 'uruguay' ? (
+                    <Check className="h-3 w-3 text-green-600" />
+                  ) : (
+                    <Copy className="h-3 w-3 text-stone-600" />
+                  )}
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Cuenta B */}
+          <div className="bg-white/80 rounded-xl p-4 border border-stone-200">
+            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇦🇷 Cuenta USD Argentina</h4>
+            <div className="space-y-2 text-stone-600">
+              <p><span className="font-medium">Banco:</span> Mercado Pago</p>
+              <p><span className="font-medium">Titular:</span> Agustin Serra</p>
+              <div className="flex items-center justify-between">
+                <p><span className="font-medium">CBU:</span> 0070123456789012345678</p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="ml-2 h-8 w-8 p-0 bg-stone-50 border-stone-300 hover:bg-stone-100"
+                  onClick={() => copyToClipboard('0070123456789012345678', 'argentina')}
+                >
+                  {copiedCBU === 'argentina' ? (
+                    <Check className="h-3 w-3 text-green-600" />
+                  ) : (
+                    <Copy className="h-3 w-3 text-stone-600" />
+                  )}
+                </Button>
+              </div>
+              <p><span className="font-medium">Alias:</span> AGUS.BODA.2025</p>
+            </div>
+          </div>
+
+          <p className="text-stone-700 text-sm text-center mt-6">
+            ¡Muchas gracias por acompañarnos en este momento tan especial!
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -140,15 +226,21 @@ function Countdown() {
   )
 }
 
-
 export default function WeddingPage() {
   const heroRef = useRef<HTMLElement>(null)
-  const whereRef = useRef<HTMLElement>(null)
-  const rsvpRef = useRef<HTMLElement>(null)
+  const whereRsvpRef = useRef<HTMLElement>(null)
+  const whereRef = useRef<HTMLDivElement>(null)
+  const rsvpRef = useRef<HTMLDivElement>(null)
+  const dressGiftsInstagramRef = useRef<HTMLElement>(null)
+  const dressCodeRef = useRef<HTMLDivElement>(null)
+  const giftsRef = useRef<HTMLDivElement>(null)
+  const instagramRef = useRef<HTMLDivElement>(null)
   const galleryRef = useRef<HTMLElement>(null)
 
+  // Estados para los modales - Movidos al nivel superior
+  const [dressCodeModalOpen, setDressCodeModalOpen] = useState(false)
+  const [bankDataModalOpen, setBankDataModalOpen] = useState(false)
 
-  
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -165,8 +257,8 @@ export default function WeddingPage() {
 
     const sections = [
       heroRef.current,
-      whereRef.current,
-      rsvpRef.current,
+      whereRsvpRef.current,
+      dressGiftsInstagramRef.current,
       galleryRef.current,
     ]
     sections.forEach((section) => {
@@ -178,6 +270,10 @@ export default function WeddingPage() {
 
   return (
     <div className="bg-top sm:bg-cover min-h-screen">
+      {/* Modales a nivel superior para evitar problemas de z-index */}
+      <DressCodeInspoModal open={dressCodeModalOpen} onClose={() => setDressCodeModalOpen(false)} />
+      <BankDataModal open={bankDataModalOpen} onClose={() => setBankDataModalOpen(false)} />
+
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -206,69 +302,9 @@ export default function WeddingPage() {
         <Countdown />
       </section>
 
-      {/* Where Section */}
+      {/* Where & RSVP Combined Section */}
       <section
-        ref={whereRef}
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)), url('/Fondo8.webp')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-          animation: "gradientBG 12s ease infinite",
-        }}
-        className="py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
-      >
-        <div className="max-w-6xl mx-auto">
-  <div className="text-center mb-16">
-    <h2 className="text-3xl md:text-4xl mb-4 animate-fade-in-up text-stone-500 poltawski-nowy">
-      ¿DÓNDE Y CUÁNDO?
-    </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
-  </div>
-  {/* Solo un cuadro, centrado y más ancho */}
-  <div className="flex justify-center">
-      <div
-    className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-stone-100 transform hover:scale-105 transition-all hover:shadow-2xl animate-slide-in-left max-w-2xl w-full"
-    style={{
-      backgroundImage: "url('/FondoCuadrito1.jpg')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-    }}
-  >
-      <div className="flex items-center gap-3 mb-6 justify-center">
-        <Calendar className="w-8 h-8 text-stone-600 justify-center" />
-      </div>
-      <div className="space-y-3 text-stone-700 mb-6 text-center">
-        <p className="text-xl font-medium">Sábado 30 de Agosto, 2025</p>
-        <p className="text-lg">17:00 h</p>
-        <p className="text-lg font-medium">Salón: Espacio PK Campo</p>
-        <p className="text-stone-600">Capilla del Señor, Prov. de Bs As</p>
-      </div>
-      <div className="flex justify-center">
-        <a
-          href="https://www.google.com/maps/place/Espacio+PK+Campo/@-34.3582413,-59.1240167,17z/data=!3m1!4b1!4m6!3m5!1s0x95bb83bc2e574ef5:0xce69798a50b7e448!8m2!3d-34.3582413!4d-59.1214364!16s%2Fg%2F11rnd2kl2v?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button
-            variant="outline"
-            className="bg-stone-100 border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
-          >
-            <MapPin className="w-4 h-4 mr-2" />
-            Ver ubicación
-          </Button>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-      </section>
-
-      {/* RSVP Section */}
-      <section
-        ref={rsvpRef}
+        ref={whereRsvpRef}
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('/Fondo12.webp')`,
           backgroundSize: "cover",
@@ -277,49 +313,189 @@ export default function WeddingPage() {
           backgroundAttachment: "fixed",
           animation: "gradientBG 12s ease infinite",
         }}
-        className="py-20 px-4 bg-gradient-to-r from-stone-100/50 to-neutral-100/50 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
+        className="opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl poltawski-nowy text-stone-600 mb-6 animate-fade-in-up ">
-            ¡Nos encantaría compartirlo con vos!
-          </h2>
-          <p className="text-lg text-stone-800 poltawski-nowy mb-12 max-w-2xl mx-auto animate-fade-in-up delay-200">
-            Confirmá asistencia e indicanos si necesitás transporte desde CABA
-          </p>
-
-          <RSVPDialog triggerClassName="bg-gradient-to-r from-stone-600 to-neutral-700 hover:from-stone-700 hover:to-neutral-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all text-lg duration-300 mb-4 animate-bounce-gentle poltawski-nowy" />
-
-          <div className="grid md:grid-cols-2 gap-12 mt-16">
-            {/* Dress Code */}
-          <div className="flex justify-center">
-            <DressCodeBox />
-          </div>
-
-            {/* Gifts */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-neutral-100 transform hover:scale-105 transition-all duration-500 animate-slide-in-right"
-                  style={{
+        {/* Where Sub-section */}
+        <div
+          ref={whereRef}
+          className="pt-20 pb-8 px-4"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl mb-4 animate-fade-in-up text-stone-500 poltawski-nowy">
+                ¿DÓNDE Y CUÁNDO?
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
+            </div>
+            {/* Solo un cuadro, centrado y más ancho */}
+            <div className="flex justify-center">
+              <div
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-stone-100 transform hover:scale-105 transition-all hover:shadow-2xl animate-slide-in-left max-w-2xl w-full"
+                style={{
                   backgroundImage: "url('/FondoCuadrito1.jpg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
-                  zIndex: 0, // aseguramos que este recuadro no tenga z-index alto que bloquee el modal
                 }}
-            >
+              >
+                <div className="flex items-center gap-3 mb-6 justify-center">
+                  <Calendar className="w-8 h-8 text-stone-600 justify-center" />
+                </div>
+                <div className="space-y-3 text-stone-700 mb-6 text-center">
+                  <p className="text-xl font-medium">Sábado 30 de Agosto, 2025</p>
+                  <p className="text-lg">17:00 h</p>
+                  <p className="text-lg font-medium">Salón: Espacio PK Campo</p>
+                  <p className="text-stone-600">Capilla del Señor, Prov. de Bs As</p>
+                </div>
+                <div className="flex justify-center">
+                  <a
+                    href="https://www.google.com/maps/place/Espacio+PK+Campo/@-34.3582413,-59.1240167,17z/data=!3m1!4b1!4m6!3m5!1s0x95bb83bc2e574ef5:0xce69798a50b7e448!8m2!3d-34.3582413!4d-59.1214364!16s%2Fg%2F11rnd2kl2v?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="outline"
+                      className="bg-stone-100 border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
+                    >
+                      <MapPin className="w-4 h-4 mr-2" />
+                      Ver ubicación
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<Gift className="w-7 h-7 text-stone-600 justify-center mx-auto" />
-<div className="h-3" /> {/* Espacio entre el icono y el texto */}
-<h3 className="text-2xl font-bold text-stone-600 mb-4 text-center">Regalo de bodas</h3>
-        
-            <p className="text-stone-700  mb-4 text-center">
-              Preferimos que nos ayudes con nuestra luna de miel :)
+        {/* RSVP Sub-section */}
+        <div
+          ref={rsvpRef}
+          className="pt-8 pb-20 px-4"
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl poltawski-nowy text-stone-600 mb-6 animate-fade-in-up ">
+              ¡Nos encantaría compartirlo con vos!
+            </h2>
+            <p className="text-lg text-stone-800 poltawski-nowy mb-12 max-w-2xl mx-auto animate-fade-in-up delay-200">
+              Confirmá asistencia e indicanos si necesitás transporte desde CABA
             </p>
-      <Button
-        className="bg-stone-100 border border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
-        onClick={() => setOpen(true)}
+
+            <RSVPDialog triggerClassName="bg-gradient-to-r from-stone-600 to-neutral-700 hover:from-stone-700 hover:to-neutral-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all text-lg duration-300 mb-4 animate-bounce-gentle poltawski-nowy" />
+          </div>
+        </div>
+      </section>
+
+      {/* Dress Code, Gifts & Instagram Combined Section */}
+      <section
+        ref={dressGiftsInstagramRef}
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('/Fondo13.jpeg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+        }}
+        className="opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
-        <BadgeDollarSign className="w-4 h-4 mr-2" />
-        Ver datos bancarios
-      </Button>
+        {/* Dress Code Sub-section */}
+        <div
+          ref={dressCodeRef}
+          className="py-16 px-4"
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center">
+              <div
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-4 sm:p-5 shadow-xl border border-stone-100 max-w-md w-full mx-auto flex flex-col items-center relative"
+                style={{
+                  backgroundImage: "url('/FondoCuadrito1.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <Shirt className="w-7 h-7 text-stone-600 justify-center" />
+                <div className="h-3" />
+                <h3 className="text-2xl font-bold text-stone-600  mb-4">Dress Code</h3>
+                <p className="text-stone-700  mb-4 text-center">
+                  Empezamos formal y terminamos cómodos
+                </p>
+                <Button
+                  className="bg-stone-100 border border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
+                  onClick={() => setDressCodeModalOpen(true)}
+                >
+                  <Lightbulb className="w-4 h-4 mr-2" />
+                  Ver inspiración
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Gifts Sub-section */}
+        <div
+          ref={giftsRef}
+          className="py-16 px-4"
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center">
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-neutral-100 transform hover:scale-105 transition-all duration-500 animate-slide-in-right max-w-md w-full"
+                    style={{
+                    backgroundImage: "url('/FondoCuadrito1.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+              >
+                <Gift className="w-7 h-7 text-stone-600 justify-center mx-auto" />
+                <div className="h-3" />
+                <h3 className="text-2xl font-bold text-stone-600 mb-4 text-center">Quiero regalar</h3>
+                
+                <p className="text-stone-700  mb-4 text-center">
+                  Si querés hacernos un regalo podés colaborar con nuestra luna de miel
+                </p>
+                <Button
+                  className="bg-stone-100 border border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
+                  onClick={() => setBankDataModalOpen(true)}
+                >
+                  <BadgeDollarSign className="w-4 h-4 mr-2" />
+                  Ver datos bancarios
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Instagram Sub-section */}
+        <div
+          ref={instagramRef}
+          className="py-16 px-4"
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-stone-100 transform hover:scale-105 transition-all duration-500 max-w-md mx-auto"
+              style={{
+                backgroundImage: "url('/FondoCuadrito1.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Instagram className="w-8 h-8 text-stone-600 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-stone-600 mb-4">Seguinos</h3>
+              <p className="text-stone-700 mb-6 text-center">
+                ¡Seguinos en Instagram y viví la previa con nosotros!
+              </p>
+              <a
+                href="https://www.instagram.com/wedding_cruzando_el_charco"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  className="bg-stone-100 border border-stone-600 text-stone-600 hover:bg-stone-50 rounded-full transform hover:scale-105 transition-all duration-300"
+                >
+                  <Instagram className="w-4 h-4 mr-2" />
+                  @wedding_cruzando_el_charco
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -328,13 +504,13 @@ export default function WeddingPage() {
       {/* Gallery Section */}
       <section
         ref={galleryRef}
-          style={{
-    backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('/Fondo10.webp')`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-  }}
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('/Fondo10.webp')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+        }}
         className="py-20 px-4 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
       >
         <div className="max-w-6xl mx-auto">
@@ -345,19 +521,26 @@ export default function WeddingPage() {
             <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
           </div>
 
-  
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
-                className="aspect-square bg-gradient-to-br from-stone-200 to-neutral-300 rounded-3xl shadow-lg transform hover:scale-105 transition-all duration-500 flex items-center justify-center group cursor-pointer animate-fade-in-up"
+                className="aspect-square rounded-3xl shadow-lg transform hover:scale-105 transition-all duration-500 group cursor-pointer animate-fade-in-up overflow-hidden"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="w-full h-full bg-gradient-to-br from-stone-300/50 to-neutral-400/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <span className="text-4xl opacity-60">📸</span>
-                </div>
+                <img
+                  src={`/Pareja${i}.jpeg`}
+                  alt={`Pareja ${i}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  style={i === 5 ? { objectPosition: 'center 70%' } : i === 6 ? { objectPosition: 'center 70%' } : {}}
+                />
               </div>
             ))}
+          </div>
+
+          {/* Botón de RSVP al final de la galería */}
+          <div className="text-center">
+            <RSVPDialog triggerClassName="bg-gradient-to-r from-stone-600 to-neutral-700 hover:from-stone-700 hover:to-neutral-800 text-white px-12 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all text-lg duration-300 animate-bounce-gentle poltawski-nowy" />
           </div>
         </div>
       </section>
