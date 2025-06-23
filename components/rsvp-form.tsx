@@ -208,7 +208,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
               <div className="mt-2 p-3 bg-stone-50 rounded-lg border border-stone-200">
                 <div className="text-sm space-y-1 text-stone-700">
                   <p className="font-semibold">📍 Salida: Plaza Italia, Palermo</p>
-                  <p className="font-semibold">🕐 Ida: 3:30 PM (estar 15 min antes)</p>
+                  <p className="font-semibold">🕐 Ida: 3:15 PM</p>
                   <p className="font-semibold">🔄 Vuelta: Sale 3:30 AM del salón</p>
                   <p className="text-xs text-stone-600 mt-2 italic">* El transporte es gratuito y regresa al mismo punto</p>
                 </div>
@@ -330,7 +330,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                       <div className="mt-2 p-3 bg-stone-50 rounded-lg border border-stone-200">
                         <div className="text-sm space-y-1 text-stone-700">
                           <p className="font-semibold">📍 Salida: Plaza Italia, Palermo</p>
-                          <p className="font-semibold">🕐 Ida: 3:30 PM (estar 15 min antes)</p>
+                          <p className="font-semibold">🕐 Ida: 3:15 PM</p>
                           <p className="font-semibold">🔄 Vuelta: Sale 3:30 AM del salón</p>
                           <p className="text-xs text-stone-600 mt-2 italic">* El transporte es gratuito y regresa al mismo punto</p>
                         </div>
@@ -407,7 +407,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
               <div className="mt-2 p-3 bg-stone-50 rounded-lg border border-stone-200">
                 <div className="text-sm space-y-1 text-stone-700">
                   <p className="font-semibold">📍 Salida: Plaza Italia, Palermo</p>
-                  <p className="font-semibold">🕐 Ida: 3:30 PM (estar 15 min antes)</p>
+                  <p className="font-semibold">🕐 Ida: 3:15 PM</p>
                   <p className="font-semibold">🔄 Vuelta: Sale 3:30 AM del salón</p>
                   <p className="text-xs text-stone-600 mt-2 italic">* El transporte es gratuito y regresa al mismo punto</p>
                 </div>
