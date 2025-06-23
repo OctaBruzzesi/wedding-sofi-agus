@@ -123,7 +123,7 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
               <p><span className="font-medium">Banco:</span> Banco Itaú</p>
               <p><span className="font-medium">Titular:</span> Sofia Plager</p>
               <div className="flex items-center justify-between">
-                <p><span className="font-medium">CBU:</span> 2872690</p>
+                <p><span className="font-medium">Cuenta:</span> 2872690</p>
                 <Button
                   size="sm"
                   variant="outline"
@@ -344,7 +344,7 @@ export default function WeddingPage() {
                 </div>
                 <div className="space-y-3 text-stone-700 mb-6 text-center">
                   <p className="text-xl font-medium">Sábado 30 de Agosto, 2025</p>
-                  <p className="text-lg">Ceremonia: 17 h. Fiesta: 18.30 h</p>
+                  <p className="text-lg">Ceremonia: 17 h | Fiesta: 18.30 h</p>
                   <p className="text-lg font-medium">Salón: Espacio PK Campo</p>
                   <p className="text-stone-600">Capilla del Señor, Prov. de Bs As</p>
                 </div>
