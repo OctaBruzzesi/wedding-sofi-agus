@@ -29,7 +29,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
       mainAttendee: {
         name: '',
         lastName: '',
-        email: '',
+        phoneNumber: '',
         needsTransport: false,
       },
       additionalAttendees: [],
@@ -43,7 +43,7 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
   })
 
   const addAttendee = () => {
-    append({ name: '', lastName: '', email: '', needsTransport: false })
+    append({ name: '', lastName: '', phoneNumber: '', needsTransport: false })
   }
 
   const removeAttendee = (index: number) => {
@@ -165,19 +165,19 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="mainAttendee.email" className="text-stone-700">
-                Email (opcional)
+              <Label htmlFor="mainAttendee.phoneNumber" className="text-stone-700">
+                Número de Celular (opcional)
               </Label>
               <Input
-                id="mainAttendee.email"
-                type="email"
-                {...form.register('mainAttendee.email')}
-                placeholder="tu@email.com"
+                id="mainAttendee.phoneNumber"
+                type="tel"
+                {...form.register('mainAttendee.phoneNumber')}
+                placeholder="1234567890"
                 className="border-stone-200 focus:border-neutral-500"
               />
-              {form.formState.errors.mainAttendee?.email && (
+              {form.formState.errors.mainAttendee?.phoneNumber && (
                 <p className="text-sm text-red-600">
-                  {form.formState.errors.mainAttendee.email.message}
+                  {form.formState.errors.mainAttendee.phoneNumber.message}
                 </p>
               )}
             </div>
@@ -287,19 +287,19 @@ export default function RSVPForm({ onSuccess, onCancel }: RSVPFormProps) {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-stone-700">Email (opcional)</Label>
+                    <Label className="text-stone-700">Número de Celular (opcional)</Label>
                     <Input
-                      type="email"
-                      {...form.register(`additionalAttendees.${index}.email`)}
-                      placeholder="email@ejemplo.com"
+                      type="tel"
+                      {...form.register(`additionalAttendees.${index}.phoneNumber`)}
+                      placeholder="1234567890"
                       className="border-stone-200 focus:border-neutral-500"
                     />
                     {form.formState.errors.additionalAttendees?.[index]
-                      ?.email && (
+                      ?.phoneNumber && (
                       <p className="text-sm text-red-600">
                         {
                           form.formState.errors.additionalAttendees[index]
-                            ?.email?.message
+                            ?.phoneNumber?.message
                         }
                       </p>
                     )}

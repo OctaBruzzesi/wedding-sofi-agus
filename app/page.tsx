@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Shirt, Calendar, MapPin, Gift, Camera, Lightbulb, BadgeDollarSign, Instagram, Copy, Check } from 'lucide-react'
+import { Shirt, Calendar, MapPin, Gift, Camera, Lightbulb, BadgeDollarSign, Instagram, Copy, Check, Mail } from 'lucide-react'
 import RSVPDialog from '@/components/rsvp-dialog'
 
 // Componente para el modal de inspiración Dress Code - Movido al nivel superior
@@ -118,7 +118,7 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
           
           {/* Cuenta A */}
           <div className="bg-white/80 rounded-xl p-4 border border-stone-200">
-            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇺🇾 Cuenta USD Uruguay</h4>
+            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇺🇾 Cuenta Dólares - Uruguay</h4>
             <div className="space-y-2 text-stone-600">
               <p><span className="font-medium">Banco:</span> Banco Itaú</p>
               <p><span className="font-medium">Titular:</span> Sofia Plager</p>
@@ -142,12 +142,12 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
 
           {/* Cuenta B */}
           <div className="bg-white/80 rounded-xl p-4 border border-stone-200">
-            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇦🇷 Cuenta USD Argentina</h4>
+            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇦🇷 Cuenta Dólares - Argentina</h4>
             <div className="space-y-2 text-stone-600">
-              <p><span className="font-medium">Banco:</span> Mercado Pago</p>
-              <p><span className="font-medium">Titular:</span> Agustin Serra</p>
+              <p><span className="font-medium">Banco:</span> Santander</p>
+              <p><span className="font-medium">Titular:</span> Diego Serra</p>
               <div className="flex items-center justify-between">
-                <p><span className="font-medium">CBU:</span> 0070123456789012345678</p>
+                <p><span className="font-medium">Alias:</span> SERRA.D</p>
                 <Button
                   size="sm"
                   variant="outline"
@@ -161,13 +161,17 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
                   )}
                 </Button>
               </div>
-              <p><span className="font-medium">Alias:</span> AGUS.BODA.2025</p>
             </div>
           </div>
 
+          <p className="text-stone-700 text-sm text-center flex items-center justify-center">
+              Si querés hacernos un regalo en efectivo, podes dárselo ese día a Diego, el papá de Agus.
+          </p>
+          
           <p className="text-stone-700 text-sm text-center mt-6">
             ¡Muchas gracias por acompañarnos en este momento tan especial!
           </p>
+          
         </div>
       </div>
     </div>
@@ -340,7 +344,7 @@ export default function WeddingPage() {
                 </div>
                 <div className="space-y-3 text-stone-700 mb-6 text-center">
                   <p className="text-xl font-medium">Sábado 30 de Agosto, 2025</p>
-                  <p className="text-lg">17:00 h</p>
+                  <p className="text-lg">Ceremonia: 17 h. Fiesta: 18.30 h</p>
                   <p className="text-lg font-medium">Salón: Espacio PK Campo</p>
                   <p className="text-stone-600">Capilla del Señor, Prov. de Bs As</p>
                 </div>
@@ -477,7 +481,7 @@ export default function WeddingPage() {
               }}
             >
               <Instagram className="w-8 h-8 text-stone-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-stone-600 mb-4">Seguinos</h3>
+              <h3 className="text-2xl font-bold text-stone-600 mb-4">Instagram</h3>
               <p className="text-stone-700 mb-6 text-center">
                 ¡Seguinos en Instagram y viví la previa con nosotros!
               </p>

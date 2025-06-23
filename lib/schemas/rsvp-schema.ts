@@ -14,7 +14,11 @@ export const attendeeSchema = z.object({
       /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
       'El apellido solo puede contener letras'
     ),
-  email: z.string().email('Email inválido').optional().or(z.literal('')),
+  phoneNumber: z
+    .string()
+    .regex(/^[+]?[0-9\s\-\(\)]{8,20}$/, 'Número de celular inválido')
+    .optional()
+    .or(z.literal('')),
   needsTransport: z.boolean().default(false),
 })
 

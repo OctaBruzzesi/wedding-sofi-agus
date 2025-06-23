@@ -43,7 +43,7 @@ export function formatAttendeeData(data: RSVPFormData) {
     timestamp,
     data.mainAttendee.name,
     data.mainAttendee.lastName,
-    data.mainAttendee.email || '',
+    data.mainAttendee.phoneNumber || '',
     data.specialRequests || '',
     data.mainAttendee.needsTransport ? 'Sí' : 'No',
   ])
@@ -54,7 +54,7 @@ export function formatAttendeeData(data: RSVPFormData) {
       timestamp,
       attendee.name,
       attendee.lastName,
-      attendee.email || '',
+      attendee.phoneNumber || '',
       data.specialRequests || '', // Special requests apply to the whole group
       attendee.needsTransport ? 'Sí' : 'No',
     ])

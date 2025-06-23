@@ -1,7 +1,8 @@
 export interface Attendee {
   name: string
   lastName: string
-  email?: string
+  phoneNumber?: string
+  needsTransport: boolean
 }
 
 export interface RSVPFormData {
