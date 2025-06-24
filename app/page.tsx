@@ -152,7 +152,7 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
                   size="sm"
                   variant="outline"
                   className="ml-2 h-8 w-8 p-0 bg-stone-50 border-stone-300 hover:bg-stone-100"
-                  onClick={() => copyToClipboard('0070123456789012345678', 'argentina')}
+                  onClick={() => copyToClipboard('SERRA.D', 'argentina')}
                 >
                   {copiedCBU === 'argentina' ? (
                     <Check className="h-3 w-3 text-green-600" />
