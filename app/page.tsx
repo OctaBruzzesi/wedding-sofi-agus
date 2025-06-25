@@ -517,7 +517,7 @@ export default function WeddingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl mb-4 animate-fade-in-up text-stone-500 poltawski-nowy">
-              NUESTRA HISTORIA
+              ¡TE ESPERAMOS!
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-stone-400 to-neutral-600 mx-auto animate-expand"></div>
           </div>
