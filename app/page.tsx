@@ -118,7 +118,7 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
           
           {/* Cuenta A */}
           <div className="bg-white/80 rounded-xl p-4 border border-stone-200">
-            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇺🇾 Cuenta Dólares - Uruguay</h4>
+            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇺🇾 URU - Dólares</h4>
             <div className="space-y-2 text-stone-600">
               <p><span className="font-medium">Banco:</span> Banco Itaú</p>
               <p><span className="font-medium">Titular:</span> Sofia Plager</p>
@@ -142,7 +142,7 @@ function BankDataModal({ open, onClose }: { open: boolean; onClose: () => void }
 
           {/* Cuenta B */}
           <div className="bg-white/80 rounded-xl p-4 border border-stone-200">
-            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇦🇷 Cuenta Dólares - Argentina</h4>
+            <h4 className="text-lg font-semibold text-stone-700 mb-3">🇦🇷 ARG - Pesos y Dólares</h4>
             <div className="space-y-2 text-stone-600">
               <p><span className="font-medium">Banco:</span> Santander</p>
               <p><span className="font-medium">Titular:</span> Diego Serra</p>
